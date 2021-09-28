@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Check</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+           
+            $(".indicatorCheck").click(function(){
+                var state =  $(this).attr("state");
+
+                console.log(state);
+                if(state == "false"){
+                    $(this).attr("state","true");
+
+                    $(this).css({
+                        "transform": "translateX(33px)"
+                    });
+
+                    var pad = $(this).parent();
+
+                    pad.removeClass("checkContentDisbled");
+                    pad.addClass("checkContentEnabled");
+
+
+
+                }else if(state == "true"){
+
+                    var pad = $(this).parent();
+
+                    $(this).css({
+                        "transform": "translateX(0PX)"
+                    });
+                    pad.removeClass("checkContentEnabled");
+                    pad.addClass("checkContentDisbled");
+            
+                
+                    $(this).attr("state","false");
+                }
+            });
+        });
+    </script>
+    <style>
+        body{
+            margin: 0px;;
+        }
+        #contenido{
+            width: 100%;
+            height:100%;
+            background-image: url('https://fondosmil.com/fondo/457.png');
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #formCheck{
+            width: 200px;
+            height: 200px; 
+            background: rgba(255, 255, 255, 0.425);
+            border-radius: 10px;;
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .checkContent{
+           width: 60px; 
+           height: 30px;
+           background:rgba(255, 255, 255, 0.445);
+           border-radius: 33px;
+           margin-top: 10px;
+           margin-bottom: 10px;
+           display: flex;
+           align-items: center;
+           border:1px solid rgba(0, 0, 0, 0.178);
+        
+        }
+        .checkContentDisbled{
+            background:linear-gradient(45deg,rgba(29, 29, 29, 0.397),rgb(124, 124, 123));
+            -webkit-transition: all .5s ease;
+        }
+        .checkContentEnabled{
+            background:linear-gradient(45deg,rgb(0, 255, 55),rgb(153, 202, 133));
+            -webkit-transition: all .5s ease;
+        }
+        .indicatorCheck{
+           width: 25px; 
+           height: 25px;
+           border:1px solid rgb(207, 207, 207);
+           background: white;
+           display: flex;
+           border-radius: 50%;;
+           -webkit-transition:all .5s ease;
+           box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.425);;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenido">
+        
+        <div id="formCheck">
+
+            <div class="checkContent checkContentDisbled">
+                <div class="indicatorCheck" state="false"></div>
+            </div>
+            <div class="checkContent checkContentDisbled">
+                <div class="indicatorCheck" state="false"></div>
+            </div>
+            <div class="checkContent checkContentDisbled">
+                <div class="indicatorCheck" state="false"></div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
